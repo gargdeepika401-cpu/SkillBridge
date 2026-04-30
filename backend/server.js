@@ -12,6 +12,17 @@ app.use(helmet());
 app.use(cors());
 app.use(morgan('dev'));
 app.use(express.json());
+// Database connection
+const db = require('./src/config/db');
+
+// Test database connection
+db.query('SELECT 1')
+  .then(() => {
+    console.log('MySQL database connected successfully');
+  })
+  .catch((err) => {
+    console.log('Database connection failed:', err.message);
+  });
 
 app.get('/', (req, res) => {
   res.json({
