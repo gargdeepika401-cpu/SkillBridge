@@ -1,0 +1,32 @@
+{
+  // Stop VS Code from watching huge folders — biggest fix for "too many files open"
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/**": true,
+    "**/dist/**": true,
+    "**/.angular/**": true,
+    "**/coverage/**": true,
+    "**/.next/**": true,
+    "**/build/**": true
+  },
+  // Exclude from search to speed up Copilot context gathering
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/.angular": true,
+    "**/coverage": true,
+    "**/package-lock.json": true
+  },
+  // Hide noise from Explorer (optional)
+  "files.exclude": {
+    "**/.angular": true
+  },
+  // Reduce TypeScript server memory pressure
+  "typescript.tsserver.maxTsServerMemory": 4096,
+  "typescript.tsserver.watchOptions": {
+    "watchFile": "useFsEventsOnParentDirectory",
+    "watchDirectory": "useFsEvents",
+    "fallbackPolling": "dynamicPriority"
+  }
+}

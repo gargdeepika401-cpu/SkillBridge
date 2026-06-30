@@ -1,0 +1,94 @@
+<div class="dash-content">
+  <div class="welcome-banner mentor-banner">
+    <div class="banner-text">
+      <h1>Hello, {{ user.name }}! 🧠</h1>
+      <p>Here's how your mentoring impact is growing.</p>
+    </div>
+    <div class="banner-art">
+      <mat-icon>psychology</mat-icon>
+    </div>
+  </div>
+
+  <!-- Stats Grid -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-icon bg-violet">
+        <mat-icon>group</mat-icon>
+      </div>
+      <div class="stat-info">
+        <span class="stat-value">0</span>
+        <span class="stat-label">Active Students</span>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon bg-indigo">
+        <mat-icon>auto_stories</mat-icon>
+      </div>
+      <div class="stat-info">
+        <span class="stat-value">0</span>
+        <span class="stat-label">Published Courses</span>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon bg-amber">
+        <mat-icon>star</mat-icon>
+      </div>
+      <div class="stat-info">
+        <span class="stat-value">--</span>
+        <span class="stat-label">Average Rating</span>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon bg-emerald">
+        <mat-icon>payments</mat-icon>
+      </div>
+      <div class="stat-info">
+        <span class="stat-value">$0</span>
+        <span class="stat-label">Total Earnings</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Schedule + Students -->
+  <div class="two-column">
+    <div class="panel">
+      <div class="panel-header">
+        <h3>Today's Schedule</h3>
+        <a class="see-all">Full calendar</a>
+      </div>
+      <div class="empty-state">
+        <mat-icon>event_available</mat-icon>
+        <p>No sessions today</p>
+        <span>Your calendar is free — update your availability</span>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-header">
+        <h3>Recent Student Activity</h3>
+        <a class="see-all">View all</a>
+      </div>
+      <div class="empty-state">
+        <mat-icon>notifications_none</mat-icon>
+        <p>No recent activity</p>
+        <span>Student progress will appear here</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Courses -->
+  <div class="panel">
+    <div class="panel-header">
+      <h3>My Courses</h3>
+      <a class="see-all">Create new course</a>
+    </div>
+    <div class="empty-state">
+      <mat-icon>library_add</mat-icon>
+      <p>No courses created yet</p>
+      <span>Share your expertise — create your first course</span>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,94 @@
+<div class="dash-content">
+  <div class="welcome-banner student-banner">
+    <div class="banner-text">
+      <h1>Welcome back, {{ user.name }}! 🎓</h1>
+      <p>Keep up the great work. Here's your learning overview.</p>
+    </div>
+    <div class="banner-art">
+      <mat-icon>school</mat-icon>
+    </div>
+  </div>
+
+  <!-- Stats Grid -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-icon bg-indigo">
+        <mat-icon>menu_book</mat-icon>
+      </div>
+      <div class="stat-info">
+        <span class="stat-value">0</span>
+        <span class="stat-label">Enrolled Courses</span>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon bg-emerald">
+        <mat-icon>check_circle</mat-icon>
+      </div>
+      <div class="stat-info">
+        <span class="stat-value">0</span>
+        <span class="stat-label">Completed</span>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon bg-amber">
+        <mat-icon>schedule</mat-icon>
+      </div>
+      <div class="stat-info">
+        <span class="stat-value">0h</span>
+        <span class="stat-label">Learning Hours</span>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon bg-pink">
+        <mat-icon>workspace_premium</mat-icon>
+      </div>
+      <div class="stat-info">
+        <span class="stat-value">0</span>
+        <span class="stat-label">Certificates</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recent Activity + Upcoming -->
+  <div class="two-column">
+    <div class="panel">
+      <div class="panel-header">
+        <h3>Continue Learning</h3>
+        <a class="see-all">View all</a>
+      </div>
+      <div class="empty-state">
+        <mat-icon>auto_stories</mat-icon>
+        <p>No courses enrolled yet</p>
+        <span>Browse courses to get started</span>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-header">
+        <h3>Upcoming Sessions</h3>
+        <a class="see-all">View all</a>
+      </div>
+      <div class="empty-state">
+        <mat-icon>event_upcoming</mat-icon>
+        <p>No upcoming sessions</p>
+        <span>Schedule a session with a mentor</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mentors -->
+  <div class="panel">
+    <div class="panel-header">
+      <h3>My Mentors</h3>
+      <a class="see-all">Find mentors</a>
+    </div>
+    <div class="empty-state">
+      <mat-icon>diversity_3</mat-icon>
+      <p>No mentors connected yet</p>
+      <span>Connect with a mentor to accelerate your learning</span>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,111 @@
+<div class="dash-content">
+  <div class="welcome-banner admin-banner">
+    <div class="banner-text">
+      <h1>Admin Panel 🛡️</h1>
+      <p>Platform overview and management — welcome, {{ user.name }}.</p>
+    </div>
+    <div class="banner-art">
+      <mat-icon>admin_panel_settings</mat-icon>
+    </div>
+  </div>
+
+  <!-- Stats Grid -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-icon bg-indigo">
+        <mat-icon>people</mat-icon>
+      </div>
+      <div class="stat-info">
+        <span class="stat-value">0</span>
+        <span class="stat-label">Total Users</span>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon bg-violet">
+        <mat-icon>supervisor_account</mat-icon>
+      </div>
+      <div class="stat-info">
+        <span class="stat-value">0</span>
+        <span class="stat-label">Active Mentors</span>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon bg-emerald">
+        <mat-icon>library_books</mat-icon>
+      </div>
+      <div class="stat-info">
+        <span class="stat-value">0</span>
+        <span class="stat-label">Published Courses</span>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon bg-amber">
+        <mat-icon>trending_up</mat-icon>
+      </div>
+      <div class="stat-info">
+        <span class="stat-value">0</span>
+        <span class="stat-label">Sessions This Week</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Management panels -->
+  <div class="two-column">
+    <div class="panel">
+      <div class="panel-header">
+        <h3>Recent Registrations</h3>
+        <a class="see-all">Manage users</a>
+      </div>
+      <div class="empty-state">
+        <mat-icon>person_add</mat-icon>
+        <p>No recent sign-ups</p>
+        <span>New registrations will appear here</span>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-header">
+        <h3>Pending Approvals</h3>
+        <a class="see-all">Review all</a>
+      </div>
+      <div class="empty-state">
+        <mat-icon>pending_actions</mat-icon>
+        <p>Nothing pending</p>
+        <span>Mentor verifications & course reviews</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Platform Health -->
+  <div class="panel">
+    <div class="panel-header">
+      <h3>Platform Health</h3>
+      <a class="see-all">View analytics</a>
+    </div>
+    <div class="health-grid">
+      <div class="health-item">
+        <div class="health-dot green"></div>
+        <span>API Server</span>
+        <span class="health-status">Operational</span>
+      </div>
+      <div class="health-item">
+        <div class="health-dot green"></div>
+        <span>Database</span>
+        <span class="health-status">Operational</span>
+      </div>
+      <div class="health-item">
+        <div class="health-dot green"></div>
+        <span>Authentication</span>
+        <span class="health-status">Operational</span>
+      </div>
+      <div class="health-item">
+        <div class="health-dot yellow"></div>
+        <span>File Storage</span>
+        <span class="health-status">Not configured</span>
+      </div>
+    </div>
+  </div>
+</div>

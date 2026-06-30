@@ -1,0 +1,183 @@
+<div class="auth-page">
+  <!-- Animated background -->
+  <div class="bg-layer">
+    <div class="gradient-orb orb-1"></div>
+    <div class="gradient-orb orb-2"></div>
+    <div class="gradient-orb orb-3"></div>
+    <div class="grid-overlay"></div>
+  </div>
+
+  <!-- Floating particles -->
+  <div class="particles">
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+
+  <!-- Main content -->
+  <div class="auth-container">
+    <!-- Left visual section -->
+    <div class="hero-section">
+      <div class="hero-content">
+        <div class="logo">
+          <div class="logo-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2L2 7l10 5 10-5-10-5z" fill="rgba(255,255,255,0.9)"/>
+              <path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="rgba(255,255,255,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
+          </div>
+          <span class="logo-name">SkillBridge</span>
+        </div>
+
+        <h1 class="hero-title">
+          Start your journey to<br />
+          <span class="highlight">greatness</span>
+        </h1>
+        <p class="hero-subtitle">
+          Create your free account and get access to world-class mentors, curated courses, and a vibrant learning community.
+        </p>
+
+        <div class="stats-row">
+          <div class="stat-item">
+            <span class="stat-number">10K+</span>
+            <span class="stat-label">Learners</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">500+</span>
+            <span class="stat-label">Mentors</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">200+</span>
+            <span class="stat-label">Courses</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Form section -->
+    <div class="form-section">
+      <div class="form-card">
+        <div class="form-header">
+          <h2>Create account</h2>
+          <p>Join SkillBridge and start learning today</p>
+        </div>
+
+        <form [formGroup]="form" (ngSubmit)="submit()" class="auth-form">
+          <div class="input-group">
+            <label for="name">Full name</label>
+            <div class="input-wrapper" [class.focused]="nameFocused()" [class.has-error]="form.controls.name.invalid && form.controls.name.touched">
+              <mat-icon class="input-icon">person_outline</mat-icon>
+              <input
+                id="name"
+                type="text"
+                formControlName="name"
+                autocomplete="name"
+                placeholder="Your full name"
+                (focus)="nameFocused.set(true)"
+                (blur)="nameFocused.set(false)"
+              />
+            </div>
+            @if (form.controls.name.hasError('required') && form.controls.name.touched) {
+              <span class="field-error">Name is required</span>
+            }
+            @if (form.controls.name.hasError('minlength') && form.controls.name.touched) {
+              <span class="field-error">At least 2 characters</span>
+            }
+          </div>
+
+          <div class="input-group">
+            <label for="reg-email">Email address</label>
+            <div class="input-wrapper" [class.focused]="emailFocused()" [class.has-error]="form.controls.email.invalid && form.controls.email.touched">
+              <mat-icon class="input-icon">mail_outline</mat-icon>
+              <input
+                id="reg-email"
+                type="email"
+                formControlName="email"
+                autocomplete="email"
+                placeholder="you@example.com"
+                (focus)="emailFocused.set(true)"
+                (blur)="emailFocused.set(false)"
+              />
+            </div>
+            @if (form.controls.email.hasError('required') && form.controls.email.touched) {
+              <span class="field-error">Email is required</span>
+            }
+            @if (form.controls.email.hasError('email') && form.controls.email.touched) {
+              <span class="field-error">Enter a valid email address</span>
+            }
+          </div>
+
+          <div class="input-group">
+            <label for="reg-password">Password</label>
+            <div class="input-wrapper" [class.focused]="passwordFocused()" [class.has-error]="form.controls.password.invalid && form.controls.password.touched">
+              <mat-icon class="input-icon">lock_outline</mat-icon>
+              <input
+                id="reg-password"
+                [type]="hidePassword() ? 'password' : 'text'"
+                formControlName="password"
+                autocomplete="new-password"
+                placeholder="At least 6 characters"
+                (focus)="passwordFocused.set(true)"
+                (blur)="passwordFocused.set(false)"
+              />
+              <button type="button" class="toggle-btn" (click)="togglePassword()">
+                <mat-icon>{{ hidePassword() ? 'visibility_off' : 'visibility' }}</mat-icon>
+              </button>
+            </div>
+            @if (form.controls.password.hasError('required') && form.controls.password.touched) {
+              <span class="field-error">Password is required</span>
+            }
+            @if (form.controls.password.hasError('minlength') && form.controls.password.touched) {
+              <span class="field-error">Minimum 6 characters</span>
+            }
+          </div>
+
+          <div class="role-picker">
+            <span class="role-label">I want to join as</span>
+            <div class="role-options">
+              @for (role of roles; track role.value) {
+                <button
+                  type="button"
+                  class="role-card"
+                  [class.active]="form.controls.role.value === role.value"
+                  (click)="form.controls.role.setValue(role.value)"
+                >
+                  <mat-icon>{{ role.value === 'student' ? 'school' : 'psychology' }}</mat-icon>
+                  <span>{{ role.label }}</span>
+                </button>
+              }
+            </div>
+          </div>
+
+          @if (errorMessage()) {
+            <div class="alert-error">
+              <mat-icon>error_outline</mat-icon>
+              <span>{{ errorMessage() }}</span>
+            </div>
+          }
+          @if (successMessage()) {
+            <div class="alert-success">
+              <mat-icon>check_circle_outline</mat-icon>
+              <span>{{ successMessage() }}</span>
+            </div>
+          }
+
+          <button type="submit" class="submit-btn" [disabled]="loading()">
+            @if (loading()) {
+              <div class="spinner"></div>
+            } @else {
+              <span>Create account</span>
+              <mat-icon>arrow_forward</mat-icon>
+            }
+          </button>
+        </form>
+
+        <p class="form-footer">
+          Already have an account?
+          <a routerLink="/login">Sign in</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

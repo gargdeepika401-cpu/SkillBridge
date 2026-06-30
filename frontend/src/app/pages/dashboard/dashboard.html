@@ -1,0 +1,94 @@
+<div class="dashboard-shell" [class.sidebar-collapsed]="!sidebarOpen()">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2L2 7l10 5 10-5-10-5z" fill="currentColor"/>
+          <path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+        <span class="logo-text">SkillBridge</span>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a class="nav-item active">
+        <mat-icon>dashboard</mat-icon>
+        <span>Dashboard</span>
+      </a>
+
+      @if (auth.user(); as user) {
+        @if (user.role === 'student') {
+          <a class="nav-item"><mat-icon>school</mat-icon><span>My Courses</span></a>
+          <a class="nav-item"><mat-icon>people</mat-icon><span>My Mentors</span></a>
+          <a class="nav-item"><mat-icon>event</mat-icon><span>Sessions</span></a>
+          <a class="nav-item"><mat-icon>workspace_premium</mat-icon><span>Certificates</span></a>
+        }
+        @if (user.role === 'mentor') {
+          <a class="nav-item"><mat-icon>auto_stories</mat-icon><span>My Courses</span></a>
+          <a class="nav-item"><mat-icon>group</mat-icon><span>My Students</span></a>
+          <a class="nav-item"><mat-icon>calendar_month</mat-icon><span>Schedule</span></a>
+          <a class="nav-item"><mat-icon>payments</mat-icon><span>Earnings</span></a>
+        }
+        @if (user.role === 'admin') {
+          <a class="nav-item"><mat-icon>people</mat-icon><span>Users</span></a>
+          <a class="nav-item"><mat-icon>library_books</mat-icon><span>Courses</span></a>
+          <a class="nav-item"><mat-icon>supervisor_account</mat-icon><span>Mentors</span></a>
+          <a class="nav-item"><mat-icon>analytics</mat-icon><span>Analytics</span></a>
+          <a class="nav-item"><mat-icon>settings</mat-icon><span>Settings</span></a>
+        }
+      }
+    </nav>
+
+    <div class="sidebar-footer">
+      <a class="nav-item" (click)="logout()">
+        <mat-icon>logout</mat-icon>
+        <span>Sign out</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- Main content area -->
+  <div class="main-area">
+    <!-- Top bar -->
+    <header class="topbar">
+      <button class="menu-btn" (click)="toggleSidebar()">
+        <mat-icon>{{ sidebarOpen() ? 'menu_open' : 'menu' }}</mat-icon>
+      </button>
+
+      <div class="topbar-right">
+        @if (auth.user(); as user) {
+          <div class="user-pill">
+            <div class="avatar">{{ user.name.charAt(0).toUpperCase() }}</div>
+            <div class="user-info">
+              <span class="user-name">{{ user.name }}</span>
+              <span class="user-role">{{ user.role }}</span>
+            </div>
+          </div>
+        }
+      </div>
+    </header>
+
+    <!-- Role-specific dashboard content -->
+    <main class="main-content">
+      @if (loading()) {
+        <div class="loading-state">
+          <div class="loader"></div>
+          <p>Loading your dashboard...</p>
+        </div>
+      } @else if (auth.user(); as user) {
+        @switch (user.role) {
+          @case ('student') {
+            <app-student-dashboard [user]="user" />
+          }
+          @case ('mentor') {
+            <app-mentor-dashboard [user]="user" />
+          }
+          @case ('admin') {
+            <app-admin-dashboard [user]="user" />
+          }
+        }
+      }
+    </main>
+  </div>
+</div>

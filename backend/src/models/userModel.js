@@ -15,4 +15,13 @@ const create = async (name, email, hashedPassword, role) => {
   return result;
 };
 
-module.exports = { findByEmail, create };
+// Update a user's password
+const updatePassword = async (email, hashedPassword) => {
+  const [result] = await db.query(
+    'UPDATE users SET password = ? WHERE email = ?',
+    [hashedPassword, email]
+  );
+  return result;
+};
+
+module.exports = { findByEmail, create, updatePassword };
